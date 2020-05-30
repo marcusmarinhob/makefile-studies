@@ -9,6 +9,11 @@
 # Email: marcusmarinhob@gmail.com
 
 all:
+	@echo "INSTALAÇÃO DO GCC:"
+	@echo "======================================="
+	@sudo apt install gcc
+	@echo
+	@echo
 	@echo "COMPILAÇÃO:"
 	@echo "======================================="
 	@echo "Compilando arquivo main.c com Makefile!"
