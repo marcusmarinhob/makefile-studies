@@ -8,25 +8,32 @@
 #
 # Email: marcusmarinhob@gmail.com
 
+APPS    = ./apps
+BIN     = ./bin
+INCLUDE = ./include
+OBJ     = ./obj
+SRC     = ./src
+
 all: clean compile run
 
 compile:
 	@printf "Compilando arquivos..."
-	@gcc -c ./src/horas.c -I ./include -o ./obj/horas.o
-	@gcc -c ./src/frase.c -I ./include -o ./obj/frase.o
-	@gcc ./apps/teste.c ./obj/*.o -I ./include -o ./bin/teste.exe
+	@gcc -c $(SRC)/horas.c -I $(INCLUDE) -o $(OBJ)/horas.o
+	@gcc -c $(SRC)/frase.c -I $(INCLUDE) -o $(OBJ)/frase.o
+	@gcc $(APPS)/teste.c $(OBJ)/*.o -I $(INCLUDE) -o $(BIN)/teste.exe
 	@printf "OK\n"
 		
 run:
 	@printf "Executando a aplicação:\n"
 	@printf "========================================\n"
 	@echo
-	@./bin/teste.exe
+	@$(BIN)/teste.exe
 	@echo
 	@printf "========================================\n"
 	@printf "Aplicação executada com sucesso!!\n\n"
 	
 clean:	
 	@printf "\nLimpando compilações anteriores..."
-	@rm ./obj/*.o
+	@rm $(OBJ)/*.o
+	@rm $(BIN)/*
 	@printf " OK\n"
