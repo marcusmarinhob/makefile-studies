@@ -17,24 +17,26 @@ SRC     = ./src
 all: clean libed app run
 
 libed: \
-	horas.o \
-	frase.o
-	
-app:
-	@printf "Compilando app teste.exe..."
-	@gcc $(APPS)/teste.c $(OBJ)/*.o -I $(INCLUDE) -o $(BIN)/teste.exe
+	$(OBJ)/horas.o \
+	$(OBJ)/frase.o
+
+app: $(BIN)/teste
+
+$(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
+	@printf "Compilando lib $@..."
+	@gcc -c $< -I $(INCLUDE) -o $@
 	@printf "OK\n"
 
-%.o: $(SRC)/%.c $(INCLUDE)/%.h
-	@printf "Compilando lib $@..."
-	@gcc -c $< -I $(INCLUDE) -o $(OBJ)/$@
-	@printf "OK\n"
+$(BIN)/%: $(APPS)/%.c
+	@printf "Compilando app $@.exe..."
+	@gcc $< $(OBJ)/*.o -I $(INCLUDE) -o $@
+	@printf "OK\n"	
 		
 run:
 	@printf "Executando a aplicação:\n"
 	@printf "========================================\n"
 	@echo
-	@$(BIN)/teste.exe
+	@$(BIN)/teste
 	@echo
 	@printf "========================================\n"
 	@printf "Aplicação executada com sucesso!!\n\n"
