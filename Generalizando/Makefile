@@ -14,6 +14,8 @@ INCLUDE = ./include
 OBJ     = ./obj
 SRC     = ./src
 
+FLAGS = -O3 -Wall -std=gnu99
+
 all: clean libed app run
 
 libed: \
@@ -24,12 +26,12 @@ app: $(BIN)/teste
 
 $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
 	@printf "Compilando lib $@..."
-	@gcc -c $< -I $(INCLUDE) -o $@
+	@gcc -c $< -I $(INCLUDE) $(FLAGS) -o $@
 	@printf "OK\n"
 
 $(BIN)/%: $(APPS)/%.c
 	@printf "Compilando app $@.exe..."
-	@gcc $< $(OBJ)/*.o -I $(INCLUDE) -o $@
+	@gcc $< $(OBJ)/*.o -I $(INCLUDE) $(FLAGS) -o $@
 	@printf "OK\n"	
 		
 run:
