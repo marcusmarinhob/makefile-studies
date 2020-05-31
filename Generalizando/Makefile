@@ -11,6 +11,7 @@
 APPS    = ./apps
 BIN     = ./bin
 INCLUDE = ./include
+LIB     = ./lib
 OBJ     = ./obj
 SRC     = ./src
 
@@ -21,6 +22,7 @@ all: clean libed app run
 libed: \
 	$(OBJ)/horas.o \
 	$(OBJ)/frase.o
+	ar -rcs $(LIB)/libed.a $(OBJ)/*.o
 
 app: $(BIN)/teste
 
