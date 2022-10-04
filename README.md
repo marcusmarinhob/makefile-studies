@@ -2,7 +2,7 @@
 
 
 <h1 align="center">
-    <img alt="Makefile" title="#Makefile" src="./Images/makefile.png" width="150px" />
+    <img alt="Makefile" title="#Makefile" src="./Images/makefile.png" width="200px" />
 </h1>
 
 <h4 align="center"> 
